@@ -24,6 +24,7 @@ jobs:
       - name: 统一配置
         run: |
           curl -o unpackage/dist/build/web/404.html https://www.qqzhi.cc/404.html
+          ls
           mv 'unpackage/dist/build/web/' 'dist/HistoryMap/'
       - name: 页面上传
         uses: actions/upload-pages-artifact@v3
