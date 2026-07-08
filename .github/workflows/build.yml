@@ -9,7 +9,6 @@ permissions:
   id-token: write
 concurrency:
   group: "pages"
-  cancel-in-progress: false
 jobs:
   deploy:
     environment:
@@ -18,16 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 工作流签出
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: 页面初始化
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: 统一配置
         run: |
           curl -o unpackage/dist/build/web/404.html https://www.qqzhi.cc/404.html
       - name: 页面上传
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: './unpackage/dist/build/web'
       - name: 页面上线
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
